@@ -11,40 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120004524) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "practices", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "question_id"
-    t.integer  "route_id"
-  end
-
-  add_index "practices", ["question_id"], name: "index_practices_on_question_id", using: :btree
-  add_index "practices", ["route_id"], name: "index_practices_on_route_id", using: :btree
-
-  create_table "questionnaires", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "questionnaires_questions", id: false, force: true do |t|
-    t.integer "questionnaire_id", null: false
-    t.integer "question_id",      null: false
-    t.boolean "answer"
-  end
-
-  create_table "questions", force: true do |t|
-    t.string   "question_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "route_id"
-  end
-
-  add_index "questions", ["route_id"], name: "index_questions_on_route_id", using: :btree
-
-  create_table "routes", force: true do |t|
-    t.string   "route"
+  create_table "question_relations", force: true do |t|
+    t.string   "question_relation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
