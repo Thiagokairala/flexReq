@@ -1,4 +1,4 @@
 class Questionnaire < ActiveRecord::Base
-	has_many :questionnaires_questions
-	has_and_belongs_to_many :questions
+	has_many :answers
+	has_many :questions, through: :answers
 end

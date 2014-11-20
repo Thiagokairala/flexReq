@@ -2,6 +2,6 @@ require 'test_helper'
 
 class QuestionnaireTest < ActiveSupport::TestCase
   def test_question_association
-  	questionnaire = questionnaire.new
+  	questionnaire = Questionnaire.new
   end
 end

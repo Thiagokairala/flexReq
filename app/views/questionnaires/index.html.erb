@@ -1,0 +1,8 @@
+<%= form_tag(controller: 'questionnaires', action: 'new') do %>
+	<% @questionnaire.questions.each do |question| %>
+		<p><%= question.question_text %>
+		<%= radio_button_tag(question.id, "true") %>
+		<%= radio_button_tag(question.id, "false") %>
+	<% end %>
+	<%= submit_tag 'Answer questionnaire' %>
+<% end %>

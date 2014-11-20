@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120013129) do
+ActiveRecord::Schema.define(version: 20141120132841) do
+
+  create_table "answers", force: true do |t|
+    t.boolean  "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "question_id"
+    t.integer  "questionnaire_id"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["questionnaire_id"], name: "index_answers_on_questionnaire_id", using: :btree
 
   create_table "practices", force: true do |t|
     t.string   "practice_name"
