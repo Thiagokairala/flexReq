@@ -2,3 +2,11 @@
 	<%= answer.question.question_text %>
 	<%= answer.answer %>
 <%end%>
+
+<br>
+<br>
+<br>
+
+<% @questionnaire.practices.each do |practice| %>
+	<%=practice.practice_name%>
+<%end%>

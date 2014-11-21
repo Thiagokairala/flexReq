@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120132841) do
+ActiveRecord::Schema.define(version: 20141121142511) do
 
   create_table "answers", force: true do |t|
     t.boolean  "answer"
@@ -36,10 +36,9 @@ ActiveRecord::Schema.define(version: 20141120132841) do
   add_index "practices", ["question_id"], name: "index_practices_on_question_id", using: :btree
   add_index "practices", ["route_id"], name: "index_practices_on_route_id", using: :btree
 
-  create_table "question_related_tos", force: true do |t|
-    t.string   "question_related_to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "practices_questionnaires", id: false, force: true do |t|
+    t.integer "questionnaire_id", null: false
+    t.integer "practice_id",      null: false
   end
 
   create_table "question_relations", force: true do |t|
@@ -64,10 +63,10 @@ ActiveRecord::Schema.define(version: 20141120132841) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "route_id"
-    t.integer  "question_relations_id"
+    t.integer  "question_relation_id"
   end
 
-  add_index "questions", ["question_relations_id"], name: "index_questions_on_question_relations_id", using: :btree
+  add_index "questions", ["question_relation_id"], name: "index_questions_on_question_relation_id", using: :btree
   add_index "questions", ["route_id"], name: "index_questions_on_route_id", using: :btree
 
   create_table "routes", force: true do |t|
