@@ -1,23 +1,29 @@
 class QuestionnairesController < ApplicationController
+	PERCENTAGE_FOR_CONSIDERATION_OF_ROUTE = 90.0
+
 	def index
 		questions = Question.all().order(:question_relation_id)
 		@questionnaire = Questionnaire.new(questions: questions)
 	end
 
 	def create
+		# Retrieving all the questions, ordered by their relation
+		# by team process and project
 		questions = Question.all().order(:question_relation_id)
 		i = 0
+		# creating a new global variable to use on the html
 		@questionnaire = Questionnaire.new()
+		# Retrieving users answers
 		answers = params[:answer]
-		@answers_array = []
+		# Getting the practices the user is going to use
 		practices = []
 		answers.each do |answer_value|
 			answer = make_answer(questions[i], @questionnaire, answer_value)
 			answer.save()
-			@answers_array.push(answer)
 			practices.push(get_practices(answer))
-
 		end
+
+		# Processing and saving questionnaire before sending to html
 		@questionnaire.practices << practices
 		@questionnaire.route = get_questionnaire_route(@questionnaire)
 		@questionnaire.save
@@ -25,6 +31,7 @@ class QuestionnairesController < ApplicationController
 
 	private
 
+	# This method process to see if the answer is true or false
 	def make_answer(question, questionnaire, answer_value)
 		answer = Answer.new
 		# GAMBIARRA
@@ -38,6 +45,7 @@ class QuestionnairesController < ApplicationController
 		return answer
 	end
 
+	# Get the practices of the question that are better fitted for the users project
 	def get_practices(answer)
 		question = answer.question
 		routeQuestion = question.route
@@ -53,13 +61,15 @@ class QuestionnairesController < ApplicationController
 		return practices_to_return
 	end
 
+	# This method gets the route fo the questionnaire based on the practices routes
 	def get_questionnaire_route(questionnaire)
 		routes = get_pratice_route(questionnaire.practices)
+		
 		routes_percentage = make_percentage(routes)
 		route_to_return = ''
-		if routes_percentage[:traditional] > 90.0
+		if routes_percentage[:traditional] > PERCENTAGE_FOR_CONSIDERATION_OF_ROUTE
 			route_to_return = 'Traditional'
-		elsif routes_percentage[:agile] > 90.0
+		elsif routes_percentage[:agile] > PERCENTAGE_FOR_CONSIDERATION_OF_ROUTE
 			route_to_return = 'Agile'
 		else
 			route_to_return = 'Hibryd'
@@ -67,29 +77,28 @@ class QuestionnairesController < ApplicationController
 		Route.where(route: route_to_return).first()
 	end
 
+	# This method gets the number of practices of each route on the project
 	def get_pratice_route(practices)
 		howManyTrad = 0
 		howManyAgile = 0
-		routeTrad = Route.where(route: 'Traditional')
-		routeAgile = Route.where(route: 'Agile')
 		practices.each do |practice|
-			if practice.route == routeTrad
+			if practice.route.route == 'Traditional'
 				howManyTrad+=1
 			else
 				howManyAgile+=1
 			end
 		end
+		# Creating and returning a hash with the numbers
 		{:traditional => howManyTrad, :agile =>howManyAgile}
 	end
 
+	# This method generates the porcentage of each route on the project
 	def make_percentage(routes)
 		total = routes[:traditional]+routes[:agile]
 		percentage_traditional = (routes[:traditional]/total)*100
 		percentage_agile = (routes[:agile]/total)*100
 
-		{
-			:traditional => percentage_traditional,
-			:agile =>percentage_agile
-		}
+		# Creating and returning a hash with the percentages
+		{:traditional => percentage_traditional,:agile =>percentage_agile}
 	end
 end
