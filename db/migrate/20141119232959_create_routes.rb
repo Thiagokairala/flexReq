@@ -7,5 +7,6 @@ class CreateRoutes < ActiveRecord::Migration
 
     Route.create(route: 'Traditional')
     Route.create(route: 'Agile')
+    Route.create(route: 'Hibryd')
   end
 end

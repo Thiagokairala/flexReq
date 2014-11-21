@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121142511) do
+ActiveRecord::Schema.define(version: 20141121145351) do
 
   create_table "answers", force: true do |t|
     t.boolean  "answer"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20141121142511) do
   create_table "questionnaires", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "route_id"
   end
+
+  add_index "questionnaires", ["route_id"], name: "index_questionnaires_on_route_id", using: :btree
 
   create_table "questionnaires_questions", id: false, force: true do |t|
     t.integer "questionnaire_id", null: false
