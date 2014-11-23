@@ -12,30 +12,30 @@ class PopulateDatabase < ActiveRecord::Migration
   	#------------------------------------------
   	# 1-
     # Populating the question
-    question = Question.create(
+    question1 = Question.create(
       question_text: 'Will your development team change on the development process?',
       route: traditional,
       question_relation: team
     )
 
     # Populating the Practices
-    practiceTraditional = Practice.create(
+    practiceTraditional1 = Practice.create(
       practice_name: 'Traditional requirements',
       practice_description: 'Use of problem, needs, features, functional requirements and use cases',
       route: traditional,
-      question: question
+      question: question1
     )
 
-    practiceAgile = Practice.create(
+    practiceAgile1 = Practice.create(
       practice_name: 'Agile requirements',
       practice_description: 'Use of investment theme, epics, features and user story',
       route: agile,
-      question: question
+      question: question1
     )
 
     # Making the relation of each pratice
-    practiceTraditional.equivalent = practiceAgile
-    practiceAgile.equivalent = practiceTraditional
+    practiceTraditional1.equivalent = practiceAgile1
+    practiceAgile1.equivalent = practiceTraditional1
     #-------------------------------------------
 
     #------------------------------------------

@@ -6,14 +6,14 @@ class QuestionnairesController < ApplicationController
 	end
 
 	def new
-		questions = Question.all().order(:question_relation_id)
+		questions = Question.all().order(:id)
 		@questionnaire = Questionnaire.new(questions: questions)
 	end
 
 	def create
 		# Retrieving all the questions, ordered by their relation
 		# by team process and project
-		questions = Question.all().order(:question_relation_id)
+		questions = Question.all().order(:id)
 		i = 0
 		# creating a new global variable to use on the html
 		@questionnaire = Questionnaire.new()
@@ -21,10 +21,13 @@ class QuestionnairesController < ApplicationController
 		answers = params[:answer]
 		# Getting the practices the user is going to use
 		practices = []
+		puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 		answers.each do |answer_value|
+			puts questions[i].question_text
 			answer = make_answer(questions[i], @questionnaire, answer_value)
 			answer.save()
 			practices.push(get_practices(answer))
+			i+=1
 		end
 
 		# Processing and saving questionnaire before sending to html
