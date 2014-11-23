@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141121145351) do
   create_table "practices", force: true do |t|
     t.string   "practice_name"
     t.text     "practice_description"
+    t.integer  "equivalent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "question_id"

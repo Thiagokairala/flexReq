@@ -7,3 +7,7 @@
 <% @questionnaire.practices.each do |practice| %>
 	<%=practice.practice_name%>
 <%end%>
+
+<h1>Do you agree with our choice?</h1>
+<%= link_to 'Yes', @questionnaire %>
+<%= link_to 'No', edit_questionnaire_path(@questionnaire) %>

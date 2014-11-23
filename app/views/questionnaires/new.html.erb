@@ -1,0 +1,13 @@
+<%= form_for @questionnaire do |questionnaire_form| %>
+	<!-- Iterating over the questions -->
+	<% @questionnaire.questions.each do |question| %>
+		<%= fields_for :answer, question do |answer_select| %>
+			<p><%= question.question_text %>
+				<%= radio_button("answer", answer_select, "true") %>
+				<%= label(:true, "Yes") %>
+				<%= radio_button("answer", answer_select, "false") %>
+				<%= label(:false, "No") %>
+		<% end %>
+	<% end %>
+	<%= submit_tag 'Answer questionnaire' %>
+<% end %>

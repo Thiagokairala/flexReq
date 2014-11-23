@@ -1,0 +1,5 @@
+<h1>Route: <%= @questionnaire.route.route %></h1>
+<h2>Práticas associadas:</h2>
+<% @questionnaire.practices.each do |practice| %>
+	<p><%= practice.practice_name %>: <%= practice.practice_description %></p>
+<% end %>

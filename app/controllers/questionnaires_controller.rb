@@ -2,6 +2,10 @@ class QuestionnairesController < ApplicationController
 	PERCENTAGE_FOR_CONSIDERATION_OF_ROUTE = 90.0
 
 	def index
+		@questionnaires = Questionnaire.all()
+	end
+
+	def new
 		questions = Question.all().order(:question_relation_id)
 		@questionnaire = Questionnaire.new(questions: questions)
 	end
@@ -27,6 +31,14 @@ class QuestionnairesController < ApplicationController
 		@questionnaire.practices << practices
 		@questionnaire.route = get_questionnaire_route(@questionnaire)
 		@questionnaire.save
+	end
+
+	def show
+		@questionnaire = Questionnaire.where(id: params[:id]).first
+	end
+
+	def edit
+		@questionnaire = Questionnaire.where(id: params[:id]).first
 	end
 
 	private
