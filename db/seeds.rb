@@ -6,6 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Route.create(route: 'Traditional')
+Route.create(route: 'Agile')
+Route.create(route: 'Hibryd')
+
+QuestionRelation.create(question_relation: 'Team')
+QuestionRelation.create(question_relation: 'Process')
+QuestionRelation.create(question_relation: 'Projetct')
+
 traditional = Route.where(route: 'Traditional').first
 agile = Route.where(route: 'Agile').first
 

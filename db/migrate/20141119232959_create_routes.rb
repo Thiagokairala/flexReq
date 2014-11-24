@@ -4,9 +4,5 @@ class CreateRoutes < ActiveRecord::Migration
     	t.string :route
       t.timestamps
     end
-
-    Route.create(route: 'Traditional')
-    Route.create(route: 'Agile')
-    Route.create(route: 'Hibryd')
   end
 end

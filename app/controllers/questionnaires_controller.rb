@@ -69,6 +69,7 @@ class QuestionnairesController < ApplicationController
 		routeQuestion = question.route
 		practices = question.practices
 		practices_to_return = []
+				puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 		if answer.answer == true
 			practices_to_return = practices.where(route: routeQuestion)
@@ -82,7 +83,6 @@ class QuestionnairesController < ApplicationController
 	# This method gets the route fo the questionnaire based on the practices routes
 	def get_questionnaire_route(questionnaire)
 		routes = get_pratice_route(questionnaire.practices)
-		
 		routes_percentage = make_percentage(routes)
 		route_to_return = ''
 		if routes_percentage[:traditional] > PERCENTAGE_FOR_CONSIDERATION_OF_ROUTE

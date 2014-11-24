@@ -1,7 +1,17 @@
-<%= link_to 'New project', new_questionnaire_path %>
-<h1>Projetos cadastrados: </h1>
-<% @questionnaires.each do |questionnaire| %>
-	<%if questionnaire.route != nil %>
-		<p><%= questionnaire.route.route %> <%= link_to "See it", questionnaire %></p>
-	<% end %>
-<%end %>
+<div class="container">
+	<div class="row">
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-default"><%= link_to 'New project', new_questionnaire_path, :class => 'iu'%></button>
+  </div>
+  <div class="col-sm-8">
+  </div>
+</div><!-- /.row -->
+
+	
+	<h1>Projetos cadastrados: </h1>
+	<% @questionnaires.each do |questionnaire| %>
+		<%if questionnaire.route != nil %>
+			<p><%= questionnaire.route.route %> <%= link_to "See it", questionnaire %></p>
+		<% end %>
+	<%end %>
+</div>
