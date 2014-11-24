@@ -23,7 +23,7 @@ class PracticesController < ApplicationController
 
 	def remove_practice(questionnaire, practice)
 		practices = questionnaire.practices
-		practices.delete(practice_to_delete)
+		practices.delete(practice)
 		return practices
 	end
 end
