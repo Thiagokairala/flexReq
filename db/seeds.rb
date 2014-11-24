@@ -63,14 +63,14 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Requirements on the begining of the project',
   practice_description: 'Developtment team write down all the requirements on the begining of the project',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'Requirements during poject',
   practice_description: 'Client writes down the requirements as the project progresses',
   route: agile,
   question: question
@@ -92,14 +92,14 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Closed process',
   practice_description: 'Team can`t modify the process',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'flexible process',
   practice_description: 'Team can modify process by testing and daily meetings',
   route: agile,
   question: question
@@ -111,14 +111,14 @@ practiceAgile.equivalent = practiceTraditional
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Manager on team',
   practice_description: 'Manager assining tasks',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'No manager on team',
   practice_description: 'Team choosing what task to do, as long they are in the spring scope',
   route: agile,
   question: question
@@ -139,14 +139,14 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Contract over negociation',
   practice_description: 'Requirements stablishied by contract',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'Negociation over contract',
   practice_description: 'Client is able to change requirements more often',
   route: agile,
   question: question
@@ -167,8 +167,8 @@ question = Question.create(
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
-  practice_description: 'Pair programing',
+  practice_name: 'Pair programing',
+  practice_description: 'The team will always program with a pair',
   route: agile,
   question: question
 )
@@ -186,15 +186,15 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
-  practice_description: 'Documentation above code',
+  practice_name: 'Documentation above code',
+  practice_description: 'The documentation is more important than the code it self',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
-  practice_description: 'Code above documentation',
+  practice_name: 'Code above documentation',
+  practice_description: 'The documentation is the code, being the first and most important thing on the project',
   route: agile,
   question: question
 )
@@ -215,14 +215,14 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Iterations',
   practice_description: 'Long iterations with lots of things to delivery',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'Sprints',
   practice_description: 'One to four week sprints, with value delivery to the Client',
   route: agile,
   question: question
@@ -244,8 +244,8 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
-  practice_description: 'Formal methods',
+  practice_name: 'Formal methods',
+  practice_description: 'Every thing must have a template, and is extremelly accurrate',
   route: traditional,
   question: question
 )
@@ -263,14 +263,14 @@ question = Question.create(
 
 # Populating the Practices
 practiceTraditional = Practice.create(
-  practice_name: 'nome da pratica tradicional',
+  practice_name: 'Requirements detailing before project',
   practice_description: 'Detailing the requirements all in the begining of the project',
   route: traditional,
   question: question
 )
 
 practiceAgile = Practice.create(
-  practice_name: 'nome da pratica agil',
+  practice_name: 'Requirements detailing along project',
   practice_description: 'Only detail requirements before implementation',
   route: agile,
   question: question
