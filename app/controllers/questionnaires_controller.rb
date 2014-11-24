@@ -21,7 +21,6 @@ class QuestionnairesController < ApplicationController
 		answers = params[:answer]
 		# Getting the practices the user is going to use
 		practices = []
-		puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 		answers.each do |answer_value|
 			puts questions[i].question_text
 			answer = make_answer(questions[i], @questionnaire, answer_value)
@@ -42,6 +41,10 @@ class QuestionnairesController < ApplicationController
 
 	def edit
 		@questionnaire = Questionnaire.where(id: params[:id]).first
+	end
+
+	def switch
+		redirect_to action: 'edit', id: params[]
 	end
 
 	private

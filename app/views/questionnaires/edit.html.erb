@@ -1,1 +1,21 @@
-teste
+<h1>The current practices of your project are:</h1>
+
+<% @questionnaire.practices.each do |practice| %>
+	<div class="practices">
+		<p><%= practice.practice_name %>: <%= practice.practice_description %></p>
+		
+		<% if practice.equivalent != nil %>
+			<p>This practice can be exchanged for: <%= practice.equivalent.practice_name %>: <%= practice.equivalent.practice_description %>
+			<%= link_to 'Change practice', questionnaire_practice_path(@questionnaire, practice), method: :put%></p>
+		<% else %>
+			<p>This practice has no equivalent in other route</p>
+		<% end %>
+
+		<p>If you don't want this practice 
+			<%=link_to "delete", questionnaire_practice_path(@questionnaire, practice), method: :delete%> 
+			it
+		</p>
+	</div>
+<% end %>
+
+<p><%= link_to 'Finish', @questionnaire %></p>
