@@ -17,12 +17,13 @@ class QuestionnairesController < ApplicationController
 		i = 0
 		# creating a new global variable to use on the html
 		@questionnaire = Questionnaire.new()
+		name = params[:questionnaire][:name]
+		@questionnaire.name = name
 		# Retrieving users answers
 		answers = params[:answer]
 		# Getting the practices the user is going to use
 		practices = []
 		answers.each do |answer_value|
-			puts questions[i].question_text
 			answer = make_answer(questions[i], @questionnaire, answer_value)
 			answer.save()
 			practices.push(get_practices(answer))
@@ -69,7 +70,6 @@ class QuestionnairesController < ApplicationController
 		routeQuestion = question.route
 		practices = question.practices
 		practices_to_return = []
-				puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 		if answer.answer == true
 			practices_to_return = practices.where(route: routeQuestion)

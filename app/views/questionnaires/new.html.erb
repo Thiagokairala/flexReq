@@ -1,5 +1,8 @@
 <%= form_for @questionnaire do |questionnaire_form| %>
 	<!-- Iterating over the questions -->
+	<%= label 'Project name', :name %>:
+	<%= text_field :questionnaire, :name, size: 20 %> <br>
+
 	<% @questionnaire.questions.each do |question| %>
 		<%= fields_for :answer, question do |answer_select| %>
 			<p><%= question.question_text %>
@@ -9,5 +12,6 @@
 				<%= label(:false, "No") %>
 		<% end %>
 	<% end %>
+
 	<%= submit_tag 'Answer questionnaire' %>
 <% end %>
